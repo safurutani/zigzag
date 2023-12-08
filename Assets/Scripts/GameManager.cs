@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,8 +13,6 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public Text highScoreText;
     public Text notifyHighScore;
-    private int picCounter;
-    
 
     private void Awake()
     {
@@ -25,14 +25,9 @@ public class GameManager : MonoBehaviour
     }
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
+        if(Input.GetKeyDown(KeyCode.Return) )
         {
             StartGame();
-        }
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            PlayerPrefs.SetInt("picCounter", picCounter++);
-            ScreenCapture.CaptureScreenshot("screenshot" + PlayerPrefs.GetInt("picCounter").ToString() + ".png");
         }
     }
     public void EndGame()
@@ -55,4 +50,5 @@ public class GameManager : MonoBehaviour
         int i = PlayerPrefs.GetInt("Highscore");
         return i;
     }
+    
 }
